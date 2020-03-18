@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: weather-city
+server:
+  port: 9089
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka

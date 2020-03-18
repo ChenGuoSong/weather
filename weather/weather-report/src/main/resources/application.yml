@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: weather-report
+server:
+  port: 8090
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+feign:
+  client:
+    config:
+      feiginName:
+        connectTimeout: 5000 #链接超时
+        readTimeout: 5000 #读取超时

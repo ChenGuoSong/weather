@@ -1,0 +1,15 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: weather-collection
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka
+feign:
+  client:
+    config:
+      feiginName:
+        connectTimeout: 5000 #链接超时
+        readTimeout: 5000 #读取超时

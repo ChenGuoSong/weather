@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: weather-eureka-server
+server:
+  port: 8081
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false #禁用客户端配置
+    fetchRegistry: false #禁用客户端配置
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+  server:
+    enable-self-preservation: false #自我防护关闭
+

@@ -1,0 +1,24 @@
+
+spring:
+  application:
+    name: weather-eureka-client
+
+eureka:
+  client:
+    registerWithEureka: true #禁用客户端配置
+    fetchRegistry: true #禁用客户端配置
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka
+server:
+  port: 8088
+feign:
+  client:
+    config:
+      feiginName:
+        connectTimeout: 5000 #链接超时
+        readTimeout: 5000 #读取超时
+zuul:
+  routes:
+    hi:
+      path: /hi/**
+      serviceId: applicationName

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3 th:text="${reportModel.title}"></h3>
+<select id="select">
+    <option th:each="city : ${reportModel.cityList}"
+            th:value="${city.cityId}" th:text="${city.cityName}"
+            th:selected="${city.cityId eq reportModel.cityId}"></option>
+</select>
+<h1 th:text="${reportModel.report.city}"></h1>
+<p>
+    空气质量：<span th:text="${reportModel.report.aqi}"></span>
+</p>
+<p>
+    当前温度：<span th:text="${reportModel.report.wendu}"></span>
+</p>
+<p>
+    温馨提示：<span th:text="${reportModel.report.ganmao}"></span>
+</p>
+<div th:each="forecast : ${reportModel.report.forecast}">
+    <div>
+        <p th:text="${forecast.date}"></p>
+        <p th:text="${forecast.high}"></p>
+        <p th:text="${forecast.fengli}"></p>
+        <p th:text="${forecast.low}"></p>
+        <p th:text="${forecast.fengxiang}"></p>
+        <p th:text="${forecast.type}"></p>
+    </div>
+</div>
+<h2>昨日天气</h2>
+<div>
+    <div>
+        <p th:text="${reportModel.report.yesterday.date}"></p>
+        <p th:text="${reportModel.report.yesterday.high}"></p>
+        <p th:text="${reportModel.report.yesterday.fx}"></p>
+        <p th:text="${reportModel.report.yesterday.low}"></p>
+        <p th:text="${reportModel.report.yesterday.fl}"></p>
+        <p th:text="${reportModel.report.yesterday.type}"></p>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+$("#select").on('change',function () {
+    var cityId = $(this).val();
+    var url = '/report/cityId/?cityId='+ cityId;
+    window.location.href = url;
+})
+
+</script>
+</html>
